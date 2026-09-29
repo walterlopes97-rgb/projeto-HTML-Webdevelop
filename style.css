@@ -1,0 +1,341 @@
+/* ==========================================================================
+
+CONFIGURAÇÕES GERAIS E VARIÁVEIS DE DESIGN
+========================================================================== */
+:root {
+--font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+--color-bg: #f0f4f8;
+--color-text: #2d3748;
+--color-white: #ffffff;
+--card-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+--transition-speed: 0.4s;
+}
+
+{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: var(--font-primary);
+background-color: var(--color-bg);
+color: var(--color-text);
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+
+.sr-only {
+position: absolute;
+width: 1px;
+height: 1px;
+padding: 0;
+margin: -1px;
+overflow: hidden;
+clip: rect(0, 0, 0, 0);
+border: 0;
+}
+
+/* ==========================================================================
+2. HEADER DINÂMICO & TEMAS CLIMÁTICOS
+========================================================================== */
+header {
+position: relative;
+padding: 2rem 3rem;
+min-height: 380px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+color: var(--color-white);
+background-size: cover;
+background-position: center;
+transition: background var(--transition-speed) ease-in-out;
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Temas de Fundo Dinâmicos (Aplicados via JS na tag header) */
+.header-thumb-dia {
+background: linear-gradient(135deg, #2980b9, #6dd5fa, #ffffff);
+}
+.header-thumb-noite {
+background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+.header-thumb-nublado {
+background: linear-gradient(135deg, #606c88, #3f4c6b);
+}
+.header-thumb-chuva-dia {
+background: linear-gradient(135deg, #3a6073, #16222a);
+}
+.header-thumb-chuva-noite {
+background: linear-gradient(135deg, #1f1c2c, #928dab);
+}
+.header-thumb-tempestade-dia {
+background: linear-gradient(135deg, #373b44, #4286f4);
+}
+.header-thumb-tempestade-noite {
+background: linear-gradient(135deg, #141e30, #243b55);
+}
+
+/* --- Calendário (Canto Superior Esquerdo) --- */
+.calendar-widget {
+position: absolute;
+top: 1.5rem;
+left: 1.5rem;
+background: rgba(255, 255, 255, 0.2);
+backdrop-filter: blur(8px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+border-radius: 12px;
+padding: 0.75rem;
+width: 170px;
+font-size: 0.75rem;
+text-align: center;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-header {
+font-weight: bold;
+margin-bottom: 0.5rem;
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+
+.calendar-body {
+display: grid;
+grid-template-columns: repeat(7, 1fr);
+gap: 3px;
+}
+
+.calendar-body span {
+padding: 2px 0;
+border-radius: 4px;
+}
+
+.calendar-body span.active {
+background-color: var(--color-white);
+color: #1a202c;
+font-weight: bold;
+}
+
+/* --- Informações de Clima do Header --- */
+.header-weather-info {
+text-align: center;
+margin-top: 3rem;
+}
+
+.header-weather-info h1 {
+font-size: 2.2rem;
+font-weight: 600;
+}
+
+.header-weather-info p {
+font-size: 1.1rem;
+opacity: 0.9;
+margin-top: 0.2rem;
+}
+
+#header-temp {
+font-size: 4rem;
+font-weight: bold;
+display: block;
+margin-top: 0.5rem;
+text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Relógio / Slider Arrastável (Sol e Lua) --- */
+.time-slider-container {
+position: relative;
+width: 80%;
+max-width: 600px;
+margin: 1.5rem auto 0 auto;
+display: flex;
+align-items: center;
+}
+
+#time-control {
+-webkit-appearance: none;
+appearance: none;
+width: 100%;
+height: 10px;
+border-radius: 5px;
+background: rgba(255, 255, 255, 0.4);
+outline: none;
+cursor: pointer;
+transition: background 0.3s;
+}
+
+#time-control::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 32px;
+height: 32px;
+border-radius: 50%;
+background: #ffd700;
+box-shadow: 0 0 12px rgba(255, 215, 0, 0.8);
+cursor: grab;
+transition: transform 0.1s ease, background-color 0.3s;
+}
+
+#time-control::-webkit-slider-thumb:active {
+cursor: grabbing;
+transform: scale(1.2);
+}
+
+/* Ícone indicativo do astro */
+.sun-icon {
+background: #ffd700;
+}
+
+.moon-icon {
+background: #e0e0e0 !important;
+box-shadow: 0 0 12px rgba(255, 255, 255, 0.8) !important;
+}
+
+/* ==========================================================================
+3. SEÇÃO PRINCIPAL - CARDS EM LINHA
+========================================================================== */
+.container {
+flex: 1;
+max-width: 1200px;
+width: 100%;
+margin: 2rem auto;
+padding: 0 1.5rem;
+}
+
+.weekly-forecast {
+width: 100%;
+}
+
+.cards-row {
+display: flex;
+justify-content: space-between;
+gap: 1rem;
+padding: 1rem 0;
+}
+
+.weather-card {
+flex: 1;
+min-width: 120px;
+background: var(--color-white);
+border-radius: 16px;
+padding: 1.5rem 1rem;
+text-align: center;
+box-shadow: var(--card-shadow);
+cursor: pointer;
+transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+border: 2px solid transparent;
+}
+
+.weather-card:hover, .weather-card:focus {
+transform: translateY(-8px);
+box-shadow: 0 15px 25px rgba(0, 0, 0, 0.12);
+border-color: #3182ce;
+outline: none;
+}
+
+.day-name {
+font-size: 1.1rem;
+color: #4a5568;
+margin-bottom: 0.75rem;
+}
+
+.weather-icon {
+width: 48px;
+height: 48px;
+margin: 0.5rem auto;
+background-size: contain;
+background-repeat: no-repeat;
+background-position: center;
+}
+
+/* Simulação gráfica dos ícones com gradientes e formas CSS */
+.icon-sun {
+background: radial-gradient(circle, #f6d365 0%, #fda085 100%);
+border-radius: 50%;
+}
+
+.icon-cloud {
+background: #cbd5e0;
+border-radius: 40%;
+}
+
+.icon-rain {
+background: linear-gradient(to bottom, #4facfe 0%, #00f2fe 100%);
+border-radius: 30%;
+}
+
+.icon-storm {
+background: linear-gradient(to bottom, #43e97b 0%, #38f9d7 100%);
+border-radius: 20%;
+}
+
+.card-temp {
+font-size: 1.4rem;
+font-weight: bold;
+color: #1a202c;
+display: block;
+margin-top: 0.5rem;
+}
+
+.card-condition {
+font-size: 0.85rem;
+color: #718096;
+margin-top: 0.25rem;
+}
+
+/* ==========================================================================
+4. RODAPÉ (FOOTER)
+========================================================================== */
+.main-footer {
+background-color: #1a202c;
+color: #a0aec0;
+padding: 1.5rem 3rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 1rem;
+}
+
+.social-links {
+display: flex;
+list-style: none;
+gap: 1.5rem;
+}
+
+.social-links a {
+color: var(--color-white);
+text-decoration: none;
+font-weight: 500;
+transition: color 0.2s ease;
+}
+
+.social-links a:hover {
+color: #63b3ed;
+}
+
+/* ==========================================================================
+5. RESPONSIVIDADE
+========================================================================== */
+@media (max-width: 768px) {
+header {
+padding: 1.5rem;
+}
+
+/* Ajustar o calendario
+.calendar-widget {
+    position: static;
+    margin: 0 auto 1rem auto;
+}
+
+.cards-row {
+    justify-content: flex-start;
+}
+
+.main-footer {
+    flex-direction: column;
+    text-align: center;
+}
+*/
+
+}
