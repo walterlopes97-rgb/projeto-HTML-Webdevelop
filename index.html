@@ -1,126 +1,212 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>WeatherApp - Previsão do Tempo</title>
-    <link rel="stylesheet" href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 </head>
+
+
 <body>
 
-    <header id="main-header" class="header-thumb-dia">
-        <!----------  Seção do calendario ---------->
-        <aside class="calendario" aria-label="Calendário Informativo">
-            <div class="calendario-header">Setembro 2026</div>
-            <input type="date" id="calendar-date" aria-label="Selecionar data">
-        </aside>      
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
 
-        <!-- Informações do Clima Atual do Header -->
+    <header
+        id="main-header"
+        class="header-thumb-dia"
+    >
+
+        <!-- =================================================
+             CALENDÁRIO
+             ================================================= -->
+
+        <aside
+            class="calendario"
+            aria-label="Calendário Informativo"
+        >
+            <input
+                type="date"
+                id="calendar-date"
+                aria-label="Selecionar data"
+            >
+        </aside>
+
+
+        <!-- =================================================
+             INFORMAÇÕES DO CLIMA
+             ================================================= -->
+
         <div class="header-weather-info">
-            <h1 id="header-city">São Paulo, BR</h1>
-            <p id="header-time">Horário: 12:00</p>
-            <p id="header-condition">Ensolarado</p>
-            <span id="header-temp">25°C</span>
+
+
+            <h1 id="header-city">
+                Carregando localização...
+            </h1>
+
+
+            <p id="header-time">
+                Horário: 12:00
+            </p>
+
+
+            <p id="header-condition">
+                Carregando previsão...
+            </p>
+
+
+            <span id="header-temp">
+                --°C
+            </span>
+
         </div>
 
-        <!-- Seletor Arrastável (Relógio do Sol / Lua) -->
+
+        <!-- =================================================
+             CONTROLE DE HORÁRIO
+             ================================================= -->
+
         <div class="time-slider-container">
-            <label for="time-control" class="sr-only">Ajustar horário do dia</label>
-            <!-- O elemento input range servirá de ponteiro interativo -->
-            <input type="range" id="time-control" min="0" max="1440" value="720" aria-label="Controle de horário do dia">
-            <div id="celestial-body" class="sun-icon" aria-hidden="true"></div>
+
+            <label
+                for="time-control"
+                class="sr-only"
+            >
+                Ajustar horário do dia
+            </label>
+
+            <input
+                type="range"
+                id="time-control"
+                min="0"
+                max="1440"
+                value="720"
+                step="60"
+                aria-label="Controle de horário do dia"
+            >
+
+
+            <div
+                id="celestial-body"
+                class="sun-icon"
+                aria-hidden="true"
+            ></div>
+
         </div>
 
     </header>
 
-    <!-- CONTEÚDO PRINCIPAL: CARDS DA SEMANA -->
+
+
+    <!-- =====================================================
+         CONTEÚDO PRINCIPAL
+         ===================================================== -->
+
     <main class="container">
-        
-        <section class="weekly-forecast" aria-labelledby="forecast-title">
-            <h2 id="forecast-title" class="sr-only">Previsão Semanal</h2>
-            
-            <div class="cards-row" id="cards-container">
-                <!-- Card: Domingo -->
-                <article class="weather-card" data-day="0" tabindex="0">
-                    <h3 class="day-name">Dom</h3>
-                    <div class="weather-icon icon-rain"></div>
-                    <span class="card-temp">19°C</span>
-                    <p class="card-condition">Chuvoso</p>
-                </article>
 
-                <!-- Card: Segunda-feira -->
-                <article class="weather-card" data-day="1" tabindex="0">
-                    <h3 class="day-name">Seg</h3>
-                    <div class="weather-icon icon-sun"></div>
-                    <span class="card-temp">26°C</span>
-                    <p class="card-condition">Ensolarado</p>
-                </article>
+        <section
+            class="weekly-forecast"
+            aria-labelledby="forecast-title"
+        >
 
-                <!-- Card: Terça-feira -->
-                <article class="weather-card" data-day="2" tabindex="0">
-                    <h3 class="day-name">Ter</h3>
-                    <div class="weather-icon icon-cloud"></div>
-                    <span class="card-temp">22°C</span>
-                    <p class="card-condition">Nublado</p>
-                </article>
 
-                <!-- Card: Quarta-feira -->
-                <article class="weather-card" data-day="3" tabindex="0">
-                    <h3 class="day-name">Qua</h3>
-                    <div class="weather-icon icon-storm"></div>
-                    <span class="card-temp">18°C</span>
-                    <p class="card-condition">Tempestade</p>
-                </article>
+            <h2
+                id="forecast-title"
+                class="sr-only"
+            >
+                Previsão Semanal
+            </h2>
 
-                <!-- Card: Quinta-feira -->
-                <article class="weather-card" data-day="4" tabindex="0">
-                    <h3 class="day-name">Qui</h3>
-                    <div class="weather-icon icon-sun"></div>
-                    <span class="card-temp">28°C</span>
-                    <p class="card-condition">Ensolarado</p>
-                </article>
 
-                <!-- Card: Sexta-feira -->
-                <article class="weather-card" data-day="5" tabindex="0">
-                    <h3 class="day-name">Sex</h3>
-                    <div class="weather-icon icon-cloud"></div>
-                    <span class="card-temp">21°C</span>
-                    <p class="card-condition">Nublado</p>
-                </article>
 
-                <!-- Card: Sábado -->
-                <article class="weather-card" data-day="6" tabindex="0">
-                    <h3 class="day-name">Sáb</h3>
-                    <div class="weather-icon icon-rain"></div>
-                    <span class="card-temp">20°C</span>
-                    <p class="card-condition">Chuva leve</p>
-                </article>
+            <div
+                class="cards-row"
+                id="cards-container"
+            >
+
             </div>
+
         </section>
 
     </main>
 
-    <!-- RODAPÉ DA PÁGINA -->
+
+
+    <!-- =====================================================
+         RODAPÉ
+         ===================================================== -->
+
     <footer class="main-footer">
-        <p>&copy; 2026 Projeto Acadêmico de Previsão do Tempo</p>
-        
-        <nav class="social-nav" aria-label="Redes Sociais">
+
+        <p>
+            &copy; 2026 Projeto Acadêmico de Previsão do Tempo
+        </p>
+
+
+        <!-- =================================================
+             REDES SOCIAIS
+             ================================================= -->
+
+        <nav
+            class="social-nav"
+            aria-label="Redes Sociais"
+        >
+
             <ul class="social-links">
+
                 <li>
-                    <a href="https://www.instagram.com/walter_lopsil?stkn=aGwwZXBvenlwM3Jm" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+
+                    <a
+                        href="https://www.instagram.com/walter_lopsil?stkn=aGwwZXBvenlwM3Jm"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Instagram"
+                    >
                         Instagram
                     </a>
+
                 </li>
+
+
                 <li>
-                    <a href="https://www.facebook.com/share/1cqMx1gtNB/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+
+                    <a
+                        href="https://www.facebook.com/share/1cqMx1gtNB/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Facebook"
+                    >
                         Facebook
                     </a>
+
                 </li>
+
             </ul>
+
         </nav>
+
     </footer>
 
-    <!-- Vinculação do arquivo JavaScript externo -->
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
     <script src="app.js"></script>
+
 </body>
+
 </html>

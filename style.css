@@ -11,12 +11,6 @@ CONFIGURAÇÕES GERAIS E VARIÁVEIS DE DESIGN
 --transition-speed: 0.4s;
 }
 
-{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
-
 body {
 font-family: var(--font-primary);
 background-color: var(--color-bg);
@@ -162,6 +156,8 @@ background: rgba(255, 255, 255, 0.4);
 outline: none;
 cursor: pointer;
 transition: background 0.3s;
+--thumb-bg: #ffd700;
+--thumb-glow: rgba(255, 215, 0, 0.8);
 }
 
 #time-control::-webkit-slider-thumb {
@@ -170,8 +166,8 @@ appearance: none;
 width: 32px;
 height: 32px;
 border-radius: 50%;
-background: #ffd700;
-box-shadow: 0 0 12px rgba(255, 215, 0, 0.8);
+background: var(--thumb-bg);
+box-shadow: 0 0 12px var(--thumb-glow);
 cursor: grab;
 transition: transform 0.1s ease, background-color 0.3s;
 }
@@ -187,8 +183,8 @@ background: #ffd700;
 }
 
 .moon-icon {
-background: #e0e0e0 !important;
-box-shadow: 0 0 12px rgba(255, 255, 255, 0.8) !important;
+background: #e0e0e0;
+box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
 }
 
 /* ==========================================================================
@@ -322,7 +318,7 @@ header {
 padding: 1.5rem;
 }
 
-/* Ajustar o calendario
+ Ajustar o calendario
 .calendar-widget {
     position: static;
     margin: 0 auto 1rem auto;
@@ -336,6 +332,6 @@ padding: 1.5rem;
     flex-direction: column;
     text-align: center;
 }
-*/
+
 
 }
